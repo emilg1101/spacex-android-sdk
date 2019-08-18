@@ -2,8 +2,12 @@ package com.github.emilg1101.spacex.api.sdk
 
 import android.content.Context
 import android.os.Handler
-import com.google.gson.Gson
-import okhttp3.*
+import com.github.emilg1101.spacex.api.sdk.converter.Converter
+import com.github.emilg1101.spacex.api.sdk.converter.GsonConverter
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
 import java.lang.reflect.Type
@@ -12,7 +16,9 @@ object SpaceX {
 
     private var client = OkHttpClient()
 
-    var mainHandler: Handler? = null
+    private var mainHandler: Handler? = null
+
+    private var converter: Converter = GsonConverter()
 
     fun init(context: Context) {
         mainHandler = Handler(context.mainLooper)
@@ -33,17 +39,15 @@ object SpaceX {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val gson = Gson()
                 mainHandler?.post {
-                    callback.success(gson.fromJson(response.body?.string(), type))
+                    callback.success(converter.convert(response.body, type))
                 }
             }
         })
     }
 
     fun <T> execute(request: SpaceXRequest<T>, type: Type): T {
-        val gson = Gson()
         val response = client.newCall(request.buildHttpRequest()).execute()
-        return gson.fromJson(response.body?.string(), type)
+        return converter.convert(response.body, type)
     }
 }
