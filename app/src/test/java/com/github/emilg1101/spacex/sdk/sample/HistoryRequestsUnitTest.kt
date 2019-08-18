@@ -1,26 +1,31 @@
 package com.github.emilg1101.spacex.sdk.sample
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.github.emilg1101.spacex.api.sdk.SpaceXCallback
 import com.github.emilg1101.spacex.api.sdk.entity.history.HistoricalEvent
 import com.github.emilg1101.spacex.api.sdk.request.SpaceXHistory
-import kotlinx.android.synthetic.main.activity_main.*
+import org.junit.Assert
+import org.junit.Test
 
-class MainActivity : AppCompatActivity() {
+class HistoryRequestsUnitTest {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    @Test
+    fun sync_receivingOneHistoricalEvent_isCorrect() {
+        val entity = SpaceXHistory.oneEvent(1).execute()
+        Assert.assertNotNull(entity)
+        Assert.assertEquals(entity.id, 1)
+    }
 
+    @Test
+    fun async_receivingOneHistoricalEvent_isCorrect() {
         SpaceXHistory.oneEvent(1).execute(object : SpaceXCallback<HistoricalEvent> {
 
             override fun success(result: HistoricalEvent) {
-                text.text = result.toString()
+                Assert.assertNotNull(result)
+                Assert.assertEquals(result.id, 1)
             }
 
             override fun fail(error: Exception) {
-                error.printStackTrace()
+                Assert.fail()
             }
         })
     }

@@ -18,7 +18,9 @@ class SpaceXURLBuilder {
     }
 
     fun addMethod(method: String) {
-        httpUrlBuilder.addPathSegment(method)
+        method.split("/").forEach {
+            httpUrlBuilder.addPathSegment(it)
+        }
     }
 
     fun addParam(name: String, value: String) {

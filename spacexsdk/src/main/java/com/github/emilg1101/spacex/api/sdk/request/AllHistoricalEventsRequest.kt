@@ -1,32 +1,21 @@
 package com.github.emilg1101.spacex.api.sdk.request
 
 import com.github.emilg1101.spacex.api.sdk.SpaceXRequest
+import com.github.emilg1101.spacex.api.sdk.entity.history.HistoricalEvent
 
-class AllHistoricalEventsRequest : SpaceXRequest() {
+class AllHistoricalEventsRequest : SpaceXRequest<List<HistoricalEvent>>() {
 
     override val method: String = "history"
 
     var id: Int? = null
-        set(value) {
-            value?.let { addParam("id", it.toString()) }
-            field = value
-        }
-
     var start: String? = null
-        set(value) {
-            value?.let { addParam("start", it) }
-            field = value
-        }
-
     var end: String? = null
-        set(value) {
-            value?.let { addParam("end", it) }
-            field = value
-        }
-
     var flightNumber: String? = null
-        set(value) {
-            value?.let { addParam("flight_number", it) }
-            field = value
-        }
+
+    override fun onStartExecute() {
+        id?.let { addParam("id", it.toString()) }
+        start?.let { addParam("start", it) }
+        end?.let { addParam("end", it) }
+        flightNumber?.let { addParam("flight_number", it) }
+    }
 }
