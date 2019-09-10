@@ -1,9 +1,9 @@
 package com.github.emilg1101.spacex.api.sdk.request
 
-import com.github.emilg1101.spacex.api.sdk.SpaceXRequest
+import com.github.emilg1101.spacex.api.sdk.SpaceXOutputControlRequest
 import com.github.emilg1101.spacex.api.sdk.entity.history.HistoricalEvent
 
-class AllHistoricalEventsRequest : SpaceXRequest<List<HistoricalEvent>>() {
+class AllHistoricalEventsRequest : SpaceXOutputControlRequest<List<HistoricalEvent>>() {
 
     override val method: String = "history"
 
@@ -13,7 +13,8 @@ class AllHistoricalEventsRequest : SpaceXRequest<List<HistoricalEvent>>() {
     var flightNumber: String? = null
 
     override fun onStartExecute() {
-        id?.let { addParam("id", it.toString()) }
+        super.onStartExecute()
+        id?.let { addParam("id", it) }
         start?.let { addParam("start", it) }
         end?.let { addParam("end", it) }
         flightNumber?.let { addParam("flight_number", it) }

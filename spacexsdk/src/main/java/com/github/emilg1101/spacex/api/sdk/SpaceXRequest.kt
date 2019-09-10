@@ -1,7 +1,6 @@
 package com.github.emilg1101.spacex.api.sdk
 
 import okhttp3.Request
-import java.lang.Exception
 import java.lang.reflect.ParameterizedType
 
 abstract class SpaceXRequest<T> {
@@ -10,8 +9,18 @@ abstract class SpaceXRequest<T> {
 
     private val spaceXURLBuilder: SpaceXURLBuilder = SpaceXURLBuilder()
 
+    private var spaceXExecutor: SpaceXExecutor? = null
+
     fun addParam(name: String, value: String) {
         spaceXURLBuilder.addParam(name, value)
+    }
+
+    fun addParam(name: String, value: Int) {
+        spaceXURLBuilder.addParam(name, value.toString())
+    }
+
+    fun addExecutor(executor: SpaceXExecutor) = apply {
+        spaceXExecutor = executor
     }
 
     fun buildHttpRequest(): Request {
@@ -24,18 +33,19 @@ abstract class SpaceXRequest<T> {
 
     fun execute(callback: SpaceXCallback<T>) {
         onStartExecute()
-        SpaceX.execute(
+        spaceXExecutor?.execute(
             this,
             callback,
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] ?: throw Exception()
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
+                ?: throw Exception()
         )
     }
 
     fun execute(): T {
         onStartExecute()
-        return SpaceX.execute(
-            this,
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] ?: throw Exception()
-        )
+        return spaceXExecutor?.execute(
+            this, (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
+                ?: throw Exception()
+        ) ?: throw Exception()
     }
 }
