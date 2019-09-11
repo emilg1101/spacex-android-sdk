@@ -1,7 +1,11 @@
 package com.github.emilg1101.spacex.api.sdk
 
+import com.github.emilg1101.spacex.api.sdk.converter.Converter
+import com.github.emilg1101.spacex.api.sdk.converter.GsonConverter
 import okhttp3.Request
+import okhttp3.Response
 import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
 
 abstract class SpaceXRequest<T> {
 
@@ -9,13 +13,15 @@ abstract class SpaceXRequest<T> {
 
     private val spaceXURLBuilder: SpaceXURLBuilder = SpaceXURLBuilder()
 
+    private var converter: Converter = GsonConverter()
+
     private var spaceXExecutor: SpaceXExecutor? = null
 
-    fun addParam(name: String, value: String) {
+    fun addParam(name: String, value: String) = apply {
         spaceXURLBuilder.addParam(name, value)
     }
 
-    fun addParam(name: String, value: Int) {
+    fun addParam(name: String, value: Int) = apply {
         spaceXURLBuilder.addParam(name, value.toString())
     }
 
@@ -35,17 +41,28 @@ abstract class SpaceXRequest<T> {
         onStartExecute()
         spaceXExecutor?.execute(
             this,
-            callback,
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
-                ?: throw Exception()
+            object : SpaceXExecutor.ExecutionCallback {
+                override fun success(response: Response) {
+                    callback.success(converter.convert(response.body, getType()))
+                }
+
+                override fun fail(exception: Exception) {
+                    callback.fail(exception)
+                }
+            }
         )
     }
 
     fun execute(): T {
         onStartExecute()
-        return spaceXExecutor?.execute(
-            this, (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
-                ?: throw Exception()
-        ) ?: throw Exception()
+        return converter.convert(
+            spaceXExecutor?.execute(this)?.body ?: throw Exception(),
+            getType()
+        )
+    }
+
+    private fun getType(): Type {
+        return (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
+            ?: throw Exception()
     }
 }

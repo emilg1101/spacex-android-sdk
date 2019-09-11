@@ -3,6 +3,8 @@ package com.github.emilg1101.spacex.api.sdk
 import android.content.Context
 import android.os.Handler
 import com.github.emilg1101.spacex.api.sdk.request.AllHistoricalEventsRequest
+import com.github.emilg1101.spacex.api.sdk.request.ApiInfoRequest
+import com.github.emilg1101.spacex.api.sdk.request.CompanyInfoRequest
 import com.github.emilg1101.spacex.api.sdk.request.OneHistoricalEventsRequest
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -35,5 +37,13 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
 
     override fun oneHistoricalEvent(id: Int): OneHistoricalEventsRequest {
         return OneHistoricalEventsRequest(id).apply { addExecutor(executor) }
+    }
+
+    override fun companyInfo(): CompanyInfoRequest {
+        return CompanyInfoRequest().apply { addExecutor(executor) }
+    }
+
+    override fun apiInfo(): ApiInfoRequest {
+        return ApiInfoRequest().apply { addExecutor(executor) }
     }
 }
