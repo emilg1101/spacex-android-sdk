@@ -14,9 +14,9 @@ class AllHistoricalEventsRequest : SpaceXOutputControlRequest<List<HistoricalEve
 
     override fun onStartExecute() {
         super.onStartExecute()
-        id?.let { addParam("id", it) }
-        start?.let { addParam("start", it) }
-        end?.let { addParam("end", it) }
-        flightNumber?.let { addParam("flight_number", it) }
+        addParam("id", id)
+        addParam("start", start)
+        addParam("end", end)
+        addParam("flight_number", flightNumber)
     }
 }

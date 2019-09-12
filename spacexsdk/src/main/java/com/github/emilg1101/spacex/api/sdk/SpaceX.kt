@@ -2,10 +2,7 @@ package com.github.emilg1101.spacex.api.sdk
 
 import android.content.Context
 import android.os.Handler
-import com.github.emilg1101.spacex.api.sdk.request.AllHistoricalEventsRequest
-import com.github.emilg1101.spacex.api.sdk.request.ApiInfoRequest
-import com.github.emilg1101.spacex.api.sdk.request.CompanyInfoRequest
-import com.github.emilg1101.spacex.api.sdk.request.OneHistoricalEventsRequest
+import com.github.emilg1101.spacex.api.sdk.request.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 
@@ -29,6 +26,22 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
         fun build(): SpaceXApi {
             return SpaceX(context, okHttpClientBuilder.build())
         }
+    }
+
+    override fun allCapsules(): AllCapsulesRequest {
+        return AllCapsulesRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneCapsule(serial: String): OneCapsuleRequest {
+        return OneCapsuleRequest(serial).apply { addExecutor(executor) }
+    }
+
+    override fun upcomingCapsules(): UpcomingCapsulesRequest {
+        return UpcomingCapsulesRequest().apply { addExecutor(executor) }
+    }
+
+    override fun pastCapsules(): PastCapsulesRequest {
+        return PastCapsulesRequest().apply { addExecutor(executor) }
     }
 
     override fun allHistoricalEvents(): AllHistoricalEventsRequest {

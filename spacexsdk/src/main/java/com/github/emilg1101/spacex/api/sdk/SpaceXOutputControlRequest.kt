@@ -9,9 +9,9 @@ abstract class SpaceXOutputControlRequest<T> : SpaceXRequest<T>() {
 
     override fun onStartExecute() {
         super.onStartExecute()
-        limit?.let { addParam("limit", it) }
-        offset?.let { addParam("offset", it) }
-        sort?.let { addParam("sort", it) }
-        order?.let { addParam("order", it) }
+        addParam("limit", limit)
+        addParam("offset", offset)
+        addParam("sort", sort)
+        addParam("order", order)
     }
 }

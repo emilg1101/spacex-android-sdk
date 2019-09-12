@@ -17,12 +17,12 @@ abstract class SpaceXRequest<T> {
 
     private var spaceXExecutor: SpaceXExecutor? = null
 
-    fun addParam(name: String, value: String) = apply {
-        spaceXURLBuilder.addParam(name, value)
+    fun addParam(name: String, value: String?) = apply {
+        value?.let { spaceXURLBuilder.addParam(name, it) }
     }
 
-    fun addParam(name: String, value: Int) = apply {
-        spaceXURLBuilder.addParam(name, value.toString())
+    fun addParam(name: String, value: Int?) = apply {
+        value?.let { spaceXURLBuilder.addParam(name, it.toString()) }
     }
 
     fun addExecutor(executor: SpaceXExecutor) = apply {
