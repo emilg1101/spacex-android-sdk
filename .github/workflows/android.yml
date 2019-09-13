@@ -17,3 +17,5 @@ jobs:
       run: ./gradlew test
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Android Tests
+      uses: vgaidarji/android-github-actions/emulator@v1.0.0
