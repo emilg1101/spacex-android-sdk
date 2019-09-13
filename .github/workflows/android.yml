@@ -13,9 +13,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Execute test
-      run: ./gradlew test
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build
+      uses: vgaidarji/android-github-actions/build@v1.0.0
+      run: ./gradlew assembleDebug -PpreDexEnable=false
     - name: Android Tests
       uses: vgaidarji/android-github-actions/emulator@v1.0.0
