@@ -20,6 +20,10 @@ interface SpaceXApi {
 
     fun pastCores(): PastCoresRequest
 
+    fun allDragons(): AllDragonsRequest
+
+    fun oneDragon(id: String): OneDragonRequest
+
     fun allHistoricalEvents(): AllHistoricalEventsRequest
 
     fun oneHistoricalEvent(id: Int): OneHistoricalEventsRequest

@@ -60,6 +60,14 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
         return PastCoresRequest().apply { addExecutor(executor) }
     }
 
+    override fun allDragons(): AllDragonsRequest {
+        return AllDragonsRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneDragon(id: String): OneDragonRequest {
+        return OneDragonRequest(id).apply { addExecutor(executor) }
+    }
+
     override fun allHistoricalEvents(): AllHistoricalEventsRequest {
         return AllHistoricalEventsRequest().apply { addExecutor(executor) }
     }
