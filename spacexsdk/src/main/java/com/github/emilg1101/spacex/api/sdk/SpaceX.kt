@@ -83,4 +83,12 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
     override fun apiInfo(): ApiInfoRequest {
         return ApiInfoRequest().apply { addExecutor(executor) }
     }
+
+    override fun allLandingPads(): AllLandingPadsRequest {
+        return AllLandingPadsRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneLandingPad(id: String): OneLandingPadRequest {
+        return OneLandingPadRequest(id).apply { addExecutor(executor) }
+    }
 }

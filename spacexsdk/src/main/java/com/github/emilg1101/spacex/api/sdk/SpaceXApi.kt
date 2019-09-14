@@ -31,4 +31,8 @@ interface SpaceXApi {
     fun companyInfo(): CompanyInfoRequest
 
     fun apiInfo(): ApiInfoRequest
+
+    fun allLandingPads(): AllLandingPadsRequest
+
+    fun oneLandingPad(id: String): OneLandingPadRequest
 }
