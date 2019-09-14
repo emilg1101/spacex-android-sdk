@@ -25,6 +25,10 @@ abstract class SpaceXRequest<T> {
         value?.let { spaceXURLBuilder.addParam(name, it.toString()) }
     }
 
+    fun addParam(name: String, value: Boolean?) = apply {
+        value?.let { spaceXURLBuilder.addParam(name, it.toString()) }
+    }
+
     fun addExecutor(executor: SpaceXExecutor) = apply {
         spaceXExecutor = executor
     }

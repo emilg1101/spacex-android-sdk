@@ -44,6 +44,22 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
         return PastCapsulesRequest().apply { addExecutor(executor) }
     }
 
+    override fun allCores(): AllCoresRequest {
+        return AllCoresRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneCore(serial: String): OneCoreRequest {
+        return OneCoreRequest(serial).apply { addExecutor(executor) }
+    }
+
+    override fun upcomingCores(): UpcomingCoresRequest {
+        return UpcomingCoresRequest().apply { addExecutor(executor) }
+    }
+
+    override fun pastCores(): PastCoresRequest {
+        return PastCoresRequest().apply { addExecutor(executor) }
+    }
+
     override fun allHistoricalEvents(): AllHistoricalEventsRequest {
         return AllHistoricalEventsRequest().apply { addExecutor(executor) }
     }

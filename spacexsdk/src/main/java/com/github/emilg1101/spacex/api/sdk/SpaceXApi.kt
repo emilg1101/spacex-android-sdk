@@ -12,6 +12,14 @@ interface SpaceXApi {
 
     fun pastCapsules(): PastCapsulesRequest
 
+    fun allCores(): AllCoresRequest
+
+    fun oneCore(serial: String): OneCoreRequest
+
+    fun upcomingCores(): UpcomingCoresRequest
+
+    fun pastCores(): PastCoresRequest
+
     fun allHistoricalEvents(): AllHistoricalEventsRequest
 
     fun oneHistoricalEvent(id: Int): OneHistoricalEventsRequest
