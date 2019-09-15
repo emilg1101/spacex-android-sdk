@@ -139,4 +139,12 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
     override fun onePayload(payloadId: String): OnePayloadRequest {
         return OnePayloadRequest(payloadId).apply { addExecutor(executor) }
     }
+
+    override fun allRockets(): AllRocketsRequest {
+        return AllRocketsRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneRocket(rocketId: String): OneRocketRequest {
+        return OneRocketRequest(rocketId).apply { addExecutor(executor) }
+    }
 }
