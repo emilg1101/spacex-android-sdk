@@ -1,4 +1,4 @@
-package com.github.emilg1101.spacex.api.sdk.entity.landpads
+package com.github.emilg1101.spacex.api.sdk.entity.pads
 
 import com.google.gson.annotations.SerializedName
 

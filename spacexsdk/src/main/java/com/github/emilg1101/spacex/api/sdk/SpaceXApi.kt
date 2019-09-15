@@ -47,4 +47,8 @@ interface SpaceXApi {
     fun latestLaunch(): LatestLaunchRequest
 
     fun nextLaunch(): NextLaunchRequest
+
+    fun allLaunchpads(): AllLaunchpadsRequest
+
+    fun oneLaunchpad(siteId: String): OneLaunchpadRequest
 }
