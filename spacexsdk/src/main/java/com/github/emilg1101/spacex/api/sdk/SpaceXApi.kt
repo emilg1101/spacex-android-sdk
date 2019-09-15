@@ -55,4 +55,8 @@ interface SpaceXApi {
     fun allMissions(): AllMissionsRequest
 
     fun oneMission(missionId: String): OneMissionRequest
+
+    fun allPayloads(): AllPayloadsRequest
+
+    fun onePayload(payloadId: String): OnePayloadRequest
 }

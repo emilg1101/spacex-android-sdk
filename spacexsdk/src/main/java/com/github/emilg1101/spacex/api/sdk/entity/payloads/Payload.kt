@@ -1,4 +1,4 @@
-package com.github.emilg1101.spacex.api.sdk.entity.launches
+package com.github.emilg1101.spacex.api.sdk.entity.payloads
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,5 +1,6 @@
 package com.github.emilg1101.spacex.api.sdk.entity.launches
 
+import com.github.emilg1101.spacex.api.sdk.entity.payloads.Payload
 import com.google.gson.annotations.SerializedName
 
 data class SecondStage(
