@@ -63,4 +63,6 @@ interface SpaceXApi {
     fun allRockets(): AllRocketsRequest
 
     fun oneRocket(rocketId: String): OneRocketRequest
+
+    fun roadster(): RoadsterRequest
 }
