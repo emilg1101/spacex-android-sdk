@@ -123,4 +123,12 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
     override fun oneLaunchpad(siteId: String): OneLaunchpadRequest {
         return OneLaunchpadRequest(siteId).apply { addExecutor(executor) }
     }
+
+    override fun allMissions(): AllMissionsRequest {
+        return AllMissionsRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneMission(missionId: String): OneMissionRequest {
+        return OneMissionRequest(missionId).apply { addExecutor(executor) }
+    }
 }

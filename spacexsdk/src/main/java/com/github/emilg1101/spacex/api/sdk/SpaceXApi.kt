@@ -51,4 +51,8 @@ interface SpaceXApi {
     fun allLaunchpads(): AllLaunchpadsRequest
 
     fun oneLaunchpad(siteId: String): OneLaunchpadRequest
+
+    fun allMissions(): AllMissionsRequest
+
+    fun oneMission(missionId: String): OneMissionRequest
 }
