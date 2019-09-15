@@ -151,4 +151,12 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
     override fun roadster(): RoadsterRequest {
         return RoadsterRequest().apply { addExecutor(executor) }
     }
+
+    override fun allShips(): AllShipsRequest {
+        return AllShipsRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneShip(shipId: String): OneShipRequest {
+        return OneShipRequest(shipId).apply { addExecutor(executor) }
+    }
 }
