@@ -91,4 +91,28 @@ class SpaceX(context: Context, client: OkHttpClient = OkHttpClient()) : SpaceXAp
     override fun oneLandingPad(id: String): OneLandingPadRequest {
         return OneLandingPadRequest(id).apply { addExecutor(executor) }
     }
+
+    override fun allLaunches(): AllLaunchesRequest {
+        return AllLaunchesRequest().apply { addExecutor(executor) }
+    }
+
+    override fun oneLaunch(flightNumber: Int): OneLaunchRequest {
+        return OneLaunchRequest(flightNumber).apply { addExecutor(executor) }
+    }
+
+    override fun pastLaunches(): PastLaunchesRequest {
+        return PastLaunchesRequest().apply { addExecutor(executor) }
+    }
+
+    override fun upcomingLaunches(): UpcomingLaunchesRequest {
+        return UpcomingLaunchesRequest().apply { addExecutor(executor) }
+    }
+
+    override fun latestLaunch(): LatestLaunchRequest {
+        return LatestLaunchRequest().apply { addExecutor(executor) }
+    }
+
+    override fun nextLaunch(): NextLaunchRequest {
+        return NextLaunchRequest().apply { addExecutor(executor) }
+    }
 }

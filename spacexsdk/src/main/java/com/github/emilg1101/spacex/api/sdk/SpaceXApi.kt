@@ -35,4 +35,16 @@ interface SpaceXApi {
     fun allLandingPads(): AllLandingPadsRequest
 
     fun oneLandingPad(id: String): OneLandingPadRequest
+
+    fun allLaunches(): AllLaunchesRequest
+
+    fun oneLaunch(flightNumber: Int): OneLaunchRequest
+
+    fun pastLaunches(): PastLaunchesRequest
+
+    fun upcomingLaunches(): UpcomingLaunchesRequest
+
+    fun latestLaunch(): LatestLaunchRequest
+
+    fun nextLaunch(): NextLaunchRequest
 }
