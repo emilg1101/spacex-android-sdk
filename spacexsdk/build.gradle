@@ -26,4 +26,6 @@ dependencies {
     api deps.gson
     testImplementation deps.junit
     testImplementation deps.mockito
+    androidTestImplementation deps.junit
+    androidTestImplementation deps.mockito
 }
