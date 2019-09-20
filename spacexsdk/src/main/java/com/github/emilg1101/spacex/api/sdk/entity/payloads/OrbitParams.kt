@@ -1,7 +1,7 @@
 package com.github.emilg1101.spacex.api.sdk.entity.payloads
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
+import java.util.Date
 
 data class OrbitParams(
     @field:SerializedName("reference_system")

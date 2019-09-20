@@ -1,7 +1,7 @@
 package com.github.emilg1101.spacex.api.sdk.entity.history
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
+import java.util.Date
 
 data class HistoricalEvent(
     @field:SerializedName("id")

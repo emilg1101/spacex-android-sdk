@@ -1,6 +1,38 @@
 package com.github.emilg1101.spacex.api.sdk
 
-import com.github.emilg1101.spacex.api.sdk.request.*
+import com.github.emilg1101.spacex.api.sdk.request.AllCapsulesRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllCoresRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllDragonsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllHistoricalEventsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllLandingPadsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllLaunchesRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllLaunchpadsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllMissionsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllPayloadsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllRocketsRequest
+import com.github.emilg1101.spacex.api.sdk.request.AllShipsRequest
+import com.github.emilg1101.spacex.api.sdk.request.ApiInfoRequest
+import com.github.emilg1101.spacex.api.sdk.request.CompanyInfoRequest
+import com.github.emilg1101.spacex.api.sdk.request.LatestLaunchRequest
+import com.github.emilg1101.spacex.api.sdk.request.NextLaunchRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneCapsuleRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneCoreRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneDragonRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneHistoricalEventsRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneLandingPadRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneLaunchRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneLaunchpadRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneMissionRequest
+import com.github.emilg1101.spacex.api.sdk.request.OnePayloadRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneRocketRequest
+import com.github.emilg1101.spacex.api.sdk.request.OneShipRequest
+import com.github.emilg1101.spacex.api.sdk.request.PastCapsulesRequest
+import com.github.emilg1101.spacex.api.sdk.request.PastCoresRequest
+import com.github.emilg1101.spacex.api.sdk.request.PastLaunchesRequest
+import com.github.emilg1101.spacex.api.sdk.request.RoadsterRequest
+import com.github.emilg1101.spacex.api.sdk.request.UpcomingCapsulesRequest
+import com.github.emilg1101.spacex.api.sdk.request.UpcomingCoresRequest
+import com.github.emilg1101.spacex.api.sdk.request.UpcomingLaunchesRequest
 
 interface SpaceXApi {
 

@@ -1,7 +1,7 @@
 package com.github.emilg1101.spacex.api.sdk.entity.capsules
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
+import java.util.Date
 
 data class Capsule(
     @field:SerializedName("capsule_serial")

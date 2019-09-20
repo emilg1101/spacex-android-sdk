@@ -2,10 +2,10 @@ package com.github.emilg1101.spacex.api.sdk
 
 import com.github.emilg1101.spacex.api.sdk.converter.Converter
 import com.github.emilg1101.spacex.api.sdk.converter.GsonConverter
-import okhttp3.Request
-import okhttp3.Response
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
+import okhttp3.Request
+import okhttp3.Response
 
 abstract class SpaceXRequest<T> {
 

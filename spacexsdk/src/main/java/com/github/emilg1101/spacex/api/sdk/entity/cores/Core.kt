@@ -1,7 +1,7 @@
 package com.github.emilg1101.spacex.api.sdk.entity.cores
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
+import java.util.Date
 
 data class Core(
     @field:SerializedName("core_serial")

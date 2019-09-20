@@ -1,11 +1,11 @@
 package com.github.emilg1101.spacex.api.sdk
 
 import android.os.Handler
+import java.io.IOException
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Response
-import java.io.IOException
 
 class SpaceXExecutor(private val client: OkHttpClient, private val handler: Handler?) {
 
