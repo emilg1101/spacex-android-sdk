@@ -1,0 +1,4 @@
+root = true
+
+[*.{java,kt,kts,scala,rs,xml,kt.spec,kts.spec}]
+disabled_rules=import-ordering
