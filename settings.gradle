@@ -1,1 +1,1 @@
-include ':app', ':spacexsdk'
+include ':app', ':spacexsdk', ':rx'

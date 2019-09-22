@@ -2,10 +2,14 @@ package com.github.emilg1101.spacex.sdk.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.github.emilg1101.spacex.api.sdk.SpaceXCallback
-import com.github.emilg1101.spacex.api.sdk.entity.capsules.Capsule
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val compositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,24 +17,22 @@ class MainActivity : AppCompatActivity() {
 
         val api = (application as App).getSpaceXApi()
 
-        /*api.oneHistoricalEvent(0).execute(object : SpaceXCallback<HistoricalEvent> {
+        compositeDisposable.add(
+            api.oneCapsule("a")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    text.text = it.toString()
+                }, {
+                    text.text = it.message
+                })
+        )
+    }
 
-            override fun success(result: HistoricalEvent) {
-                text.text = result.toString()
-            }
-
-            override fun fail(error: Exception) {
-                error.printStackTrace()
-            }
-        })*/
-        api.allCapsules().execute(object: SpaceXCallback<List<Capsule>> {
-            override fun success(result: List<Capsule>) {
-
-            }
-
-            override fun fail(error: Exception) {
-                error.printStackTrace()
-            }
-        })
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!compositeDisposable.isDisposed) {
+            compositeDisposable.dispose()
+        }
     }
 }
